@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUPUS.Abstraction", "SUPUS.Abstraction\SUPUS.Abstraction.csproj", "{EF90162B-AB78-4C45-B551-253C3DCC5C4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUPUS.Abstraction", "src\SUPUS.Abstraction\SUPUS.Abstraction.csproj", "{EF90162B-AB78-4C45-B551-253C3DCC5C4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUPUS.Database", "SUPUS.Database\SUPUS.Database.csproj", "{892D8B9B-D29F-49B4-9784-1D7FD6A82DC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUPUS.Database", "src\SUPUS.Database\SUPUS.Database.csproj", "{892D8B9B-D29F-49B4-9784-1D7FD6A82DC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUPUS.Web", "SUPUS.Web\SUPUS.Web.csproj", "{34678F38-BC54-4B5B-836C-431C1EBBFC47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUPUS.Web", "src\SUPUS.Web\SUPUS.Web.csproj", "{34678F38-BC54-4B5B-836C-431C1EBBFC47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

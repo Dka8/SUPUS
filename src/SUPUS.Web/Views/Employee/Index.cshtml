@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SUPUS.Abstraction.Employee>
+    @{
+        ViewBag.Title = "Users";
+    }
+    <div class="container" style="margin-top:60px">
+        <div class="card border-info">
+            <div class="card-header text-white bg-info">
+                <strong>Users</strong><span>&nbsp;-&nbsp;Total:@Model.Count()</span>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Фамилия</th>
+                        <th>Имя</th>                        
+                    </tr>
+                    @foreach (var u in Model)
+                    {
+                    <tr>
+                        <td>@u.Id</td>
+                        <td><a asp-controller="Employee">@u.LastName</a></td>
+                        <td><a asp-controller="Employee">@u.FirstName</a></td>
+                        <td><a class="btn-sm btn-primary" asp-controller="Employee" asp-action="Detail" asp-route-name="@u.LastName">Detail</a></td>
+                    </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using SUPUS.Abstraction;
+using SUPUS.Database;
+using SUPUS.FakeDatabase;
 
 namespace SUPUS.Web
 {
@@ -24,6 +27,8 @@ namespace SUPUS.Web
                     option.AccessDeniedPath = "/Error/AccessDenied";
                     option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 });
+
+            services.AddScoped<IDbContext, FakeDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

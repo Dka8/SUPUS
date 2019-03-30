@@ -26,7 +26,8 @@ namespace SUPUS.Web.Controllers
         // GET: Employee/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var employee = _dbContext.GetEmployees().FirstOrDefault(e => e.Id == id);
+            return View(employee);
         }
 
         // GET: Employee/Create

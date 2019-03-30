@@ -24,4 +24,10 @@
     <ProjectReference Include="..\SUPUS.SqliteDatabase\SUPUS.SqliteDatabase.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Buttons\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>

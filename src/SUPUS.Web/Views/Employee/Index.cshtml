@@ -3,8 +3,8 @@
         ViewBag.Title = "Users";
     }
     <div class="container" style="margin-top:60px">
-        <div class="card border-info">
-            <div class="card-header text-white bg-info">
+        <div class="card border-secondary">
+            <div class="card-header text-white" style="background-color: #ed1c24;">
                 <strong>Users</strong><span>&nbsp;-&nbsp;Total:@Model.Count()</span>
             </div>
             <div class="card-body">
@@ -18,9 +18,9 @@
                     {
                     <tr>
                         <td>@u.Id</td>
-                        <td><a asp-controller="Employee">@u.LastName</a></td>
-                        <td><a asp-controller="Employee">@u.FirstName</a></td>
-                        <td><a class="btn-sm btn-primary" asp-controller="Employee" asp-action="Detail" asp-route-name="@u.LastName">Detail</a></td>
+                        <td>@u.LastName</td>
+                        <td>@u.FirstName</td>
+                        <td><a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Employee" asp-action="Details" asp-route-id="@u.Id">Detail</a></td>
                     </tr>
                     }
                 </table>

@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SUPUS.Abstraction;
 using SUPUS.Database;
 using SUPUS.FakeDatabase;
+using SUPUS.SqliteDatabase;
 
 namespace SUPUS.Web
 {
@@ -28,7 +29,7 @@ namespace SUPUS.Web
                     option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 });
 
-            services.AddScoped<IDbContext, FakeDbContext>();
+            services.AddScoped<IDbContext, SqliteDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

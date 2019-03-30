@@ -21,6 +21,7 @@
     <ProjectReference Include="..\SUPUS.Abstraction\SUPUS.Abstraction.csproj" />
     <ProjectReference Include="..\SUPUS.Database\SUPUS.Database.csproj" />
     <ProjectReference Include="..\SUPUS.FakeDatabase\SUPUS.FakeDatabase.csproj" />
+    <ProjectReference Include="..\SUPUS.SqliteDatabase\SUPUS.SqliteDatabase.csproj" />
   </ItemGroup>
 
 </Project>

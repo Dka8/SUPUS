@@ -8,22 +8,23 @@ namespace SUPUS.SqliteDatabase
     public class SqliteDbContext : IDbContext
     {
         private const string EmployeeTable =
-            @"CREATE TABLE Employee(
-                Id INTEGER PRIMARY KEY,
-                Email VARCHAR(50) NOT NULL UNIQUE,
-                FirstName VARCHAR(50) NOT NULL,
-                LastName VARCHAR(50) NOT NULL,
-                MiddleName VARCHAR(50)                
+            @"CREATE TABLE EMPLOYEE(
+                EMPLOYEE_ID INTEGER PRIMARY KEY,
+                EMAIL VARCHAR(50) NOT NULL UNIQUE,
+                FIRST_NAME VARCHAR(50) NOT NULL,
+                LAST_NAME VARCHAR(50) NOT NULL,
+                MIDDLE_NAME VARCHAR(50),
+                SHIFT_NUMBER INTEGER
             );";
 
         private const string PopulateEmployee =
-            @"INSERT INTO Employee 
-                (Email, FirstName, LastName, MiddleName)
+            @"INSERT INTO EMPLOYEE
+                (EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, SHIFT_NUMBER)
                 VALUES 
-                ('gg1@mail.ru','Snya','Petrov',''),
-                ('gg2@mail.ru','Snya','Petrov',''),
-                ('gg3@mail.ru','Snya','Petrov',''),
-                ('gg4@mail.ru','Snya','Petrov',NULL)
+                ('gg1@mail.ru','Snya','Petrov','',1),
+                ('gg2@mail.ru','Snya','Petrov','',2),
+                ('gg3@mail.ru','Snya','Petrov','',1),
+                ('gg4@mail.ru','Snya','Petrov',NULL,1)
             ;";
 
         private SqliteConnection _connection;
@@ -46,9 +47,9 @@ namespace SUPUS.SqliteDatabase
         {
             var command = _connection.CreateCommand();
             command.CommandText =
-                @"SELECT Id, Email, FirstName, LastName, MiddleName
-                FROM Employee
-                ORDER BY Id";
+                @"SELECT EMPLOYEE_ID, EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, SHIFT_NUMBER
+                FROM EMPLOYEE
+                ORDER BY EMPLOYEE_ID";
 
             var reader = command.ExecuteReader();
 
@@ -61,7 +62,8 @@ namespace SUPUS.SqliteDatabase
                     Email = reader.GetString(1),
                     FirstName = reader.GetString(2),
                     LastName = reader.GetString(3),
-                    MiddleName = reader.IsDBNull(4) ? String.Empty : reader.GetString(4)
+                    MiddleName = reader.IsDBNull(4) ? String.Empty : reader.GetString(4),
+                    ShiftNumber = reader.GetInt32(5)
                 };
                 employees.Add(employee);
             }

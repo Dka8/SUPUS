@@ -29,7 +29,7 @@ namespace SUPUS.Web
                     option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 });
 
-            services.AddScoped<IDbContext, SqliteDbContext>();
+            services.AddSingleton<IDbContext, SqliteDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

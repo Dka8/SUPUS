@@ -119,7 +119,7 @@ namespace SUPUS.SqliteDatabase
             }
             else
             {
-                return $@"UPDATE INTO TIME_TABLE
+                return $@"UPDATE TIME_TABLE
                 SET END = '{info.Time}'
                 WHERE EMPLOYEE_ID = {info.Id} AND DATE = '{info.Date}';";               
             }
@@ -137,25 +137,22 @@ namespace SUPUS.SqliteDatabase
             command.CommandText =
                 $@"SELECT EMPLOYEE_ID, DATE, BEGIN, END
                 FROM TIME_TABLE
-                WHERE EMPLOYEE_ID = {id}";
+                WHERE EMPLOYEE_ID = {id};";
             var reader = command.ExecuteReader();
 
-            var TimeTable = new List<TimeTable>();
+            var timeTable = new List<TimeTable>();
             while (reader.Read())
             {
-                var employee = new TimeTable()
+                var entry = new TimeTable()
                 {
                     Id = reader.GetInt32(0),
                     Date = reader.GetString(1),
                     Present = reader.GetString(2),
-                    Absent = reader.GetString(3)
+                    Absent = reader.IsDBNull(3) ? String.Empty : reader.GetString(3)
                 };
+                timeTable.Add(entry);
             };
-            
-
-            return TimeTable;
-            throw new NotImplementedException();
-
+            return timeTable;
         }
     }
 }

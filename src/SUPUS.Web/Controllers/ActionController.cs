@@ -52,10 +52,18 @@ namespace SUPUS.Web.Controllers
             try
             {
                 // TODO: Add insert logic here
+                ActionInfo info = new ActionInfo()
+                {
+                    Id = id,
+                    Date = DateTime.Now.ToString("dd/MM/yyyy"),
+                    Time = DateTime.Now.ToString("hh:mm:ss"),
+                    IsPresent = false
+                };
 
+                _dbContext.EmployeeAction(info);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }

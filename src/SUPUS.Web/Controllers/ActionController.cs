@@ -15,21 +15,7 @@ namespace SUPUS.Web.Controllers
             return View();
         }
 
-        // GET: Action/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Action/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Action/Present
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // GET: Action/Present
         public ActionResult Present(int id)
         {
             try
@@ -44,9 +30,7 @@ namespace SUPUS.Web.Controllers
             }
         }
 
-        // POST: Action/Absent
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // GET: Action/Absent
         public ActionResult Absent(int id)
         {
             try
@@ -60,6 +44,46 @@ namespace SUPUS.Web.Controllers
                 return View();
             }
         }
+
+        // GET: Action/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //// POST: Action/Present
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Present(int id)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add insert logic here
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+        //// POST: Action/Absent
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Absent(int id)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add insert logic here
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Action/Edit/5
         public ActionResult Edit(int id)

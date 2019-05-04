@@ -134,6 +134,10 @@ namespace SUPUS.SqliteDatabase
         public IEnumerable<TimeTable> GetTimeTable(int id)
         {
             var command = _connection.CreateCommand();
+            command.CommandText =
+                $@"SELECT EMPLOYEE_ID, DATE, BEGIN, END
+                FROM TIME_TABLE
+                WHERE EMPLOYEE_ID = {id}";
             var reader = command.ExecuteReader();
 
             var TimeTable = new List<TimeTable>();

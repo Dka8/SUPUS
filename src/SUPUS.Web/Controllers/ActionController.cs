@@ -38,7 +38,7 @@ namespace SUPUS.Web.Controllers
                 };
 
                 _dbContext.EmployeeAction(info);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(HomeController.Index));
             }
             catch(Exception ex)
             {

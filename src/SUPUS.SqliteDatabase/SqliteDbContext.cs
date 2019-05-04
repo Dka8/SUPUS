@@ -22,8 +22,17 @@ namespace SUPUS.SqliteDatabase
         private const string ShiftTable =
             @"CREATE TABLE SHIFT(
                 NUMBER INTEGER PRIMARY KEY,
-                BEGIN TIME NOT NULL,
-                END TIME NOT NULL
+                BEGIN STRING NOT NULL,
+                END STRING NOT NULL
+            );";
+
+        private const string TimeTable =
+            @"PRAGMA foreign_keys=on;
+                CREATE TABLE TIME_TABLE(
+                FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEE(EMPLOYEE_ID) PRIMARY KEY,
+                DATA STRING PRIMARY KEY,
+                BEGIN STRING NOT NULL,
+                END STRING NOT NULL
             );";
 
         private const string PopulateEmployee =
@@ -40,8 +49,16 @@ namespace SUPUS.SqliteDatabase
             @"INSERT INTO SHIFT
                 (NUMBER, BEGIN, END)
                 VALUES 
-                (1, '09:00:00', '18:00:00'),
+                (1, '9:00:00', '18:00:00'),
                 (2, '12:00:00', '20:00:00')
+            ;";
+
+        private const string PopulateTime =
+            @"INSERT INTO SHIFT
+                (EMPLOYEE_ID, DATA, BEGIN, END)
+                VALUES 
+                (1, '2.01.1998', '9:00:00', '18:00:00'),
+                (2, '1.01.1999', '12:00:00', '20:00:00')
             ;";
 
         private SqliteConnection _connection;
@@ -87,13 +104,17 @@ namespace SUPUS.SqliteDatabase
                 employee.Shift = new ShiftType
                 {
                     Number = reader.GetInt32(5),
-                    Begin = reader.GetTimeSpan(6),
-                    End = reader.GetTimeSpan(7)
+                    Begin = reader.GetString(6),
+                    End = reader.GetString(7)
                 };
                 employees.Add(employee);
             }
 
             return employees;
+        }
+
+        void EmployeeAction()
+        {
         }
     }
 }

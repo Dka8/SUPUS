@@ -15,7 +15,7 @@ namespace SUPUS.Abstraction
     public class ShiftType
     {
         public int Number { get; set; }
-        public TimeSpan Begin { get; set; }
-        public TimeSpan End { get; set; }
+        public string Begin { get; set; }
+        public string End { get; set; }
     }
 }

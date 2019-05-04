@@ -22,8 +22,17 @@ namespace SUPUS.SqliteDatabase
         private const string ShiftTable =
             @"CREATE TABLE SHIFT(
                 NUMBER INTEGER PRIMARY KEY,
-                BEGIN TIME NOT NULL,
-                END TIME NOT NULL
+                BEGIN STRING NOT NULL,
+                END STRING NOT NULL
+            );";
+
+        private const string TimeTable =
+            @"PRAGMA foreign_keys=on;
+                CREATE TABLE TIME_TABLE(
+                FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEE(EMPLOYEE_ID) PRIMARY KEY,
+                DATE STRING PRIMARY KEY,
+                BEGIN STRING NOT NULL,
+                END STRING NOT NULL
             );";
 
         private const string PopulateEmployee =
@@ -40,7 +49,7 @@ namespace SUPUS.SqliteDatabase
             @"INSERT INTO SHIFT
                 (NUMBER, BEGIN, END)
                 VALUES 
-                (1, '09:00:00', '18:00:00'),
+                (1, '9:00:00', '18:00:00'),
                 (2, '12:00:00', '20:00:00')
             ;";
 
@@ -87,13 +96,36 @@ namespace SUPUS.SqliteDatabase
                 employee.Shift = new ShiftType
                 {
                     Number = reader.GetInt32(5),
-                    Begin = reader.GetTimeSpan(6),
-                    End = reader.GetTimeSpan(7)
+                    Begin = reader.GetString(6),
+                    End = reader.GetString(7)
                 };
                 employees.Add(employee);
             }
 
             return employees;
+        }
+
+        private string Temp(ActionInfo info)
+        {
+            if (info.IsPresent)
+            {
+                return $@"INSERT INTO TIME
+                (EMPLOYEE_ID, DATE, BEGIN, END)
+                VALUES 
+                ({info.Id}, {info.Date}, {info.Time}, null)";
+            }
+            else
+            {
+                return $@"UPDATE INTO TIME
+                SET END {info.Time}
+                WHERE EMPLOYEE_ID = {info.Id} AND DATE = {info.Date}";               
+            }
+        }
+
+        public void EmployeeAction(ActionInfo info)
+        {
+            string temp = Temp(info);
+            ExecuteNonQuery(temp);           
         }
     }
 }

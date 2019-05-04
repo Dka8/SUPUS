@@ -1,25 +1,46 @@
-﻿@{
-    ViewBag.Title = "SUPUS Home";
+﻿
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="container" style="height:700px">
-    <div class="card border-secondary" style="margin-top:120px">
-        <div class="card-header text-white" style="background-color: #ed1c24;">
-           <strong>Introduction</strong>
-        </div>
-        <div class="card-body">
-            <h2>Добро пожаловать в СУПУС!</h2>
-            <p>
-                СУПУС это новейшая системя для учета прихода и ухода сотрудников. Основные достоинста нашей системы:<br />
-                <ul>
-                    <li>Интуитивный интерфейс</li>
-                    <li>Надежность</li>
-                    <li>Простота в использовании и развертывании</li>
-                </ul>
-            </p>
-            <p>
-                В ближайшем будущем пользовательская база СУПУСа будет только расти. Успевайте стать первыми!
-            </p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <img src="/_Znatok/Pictures/DSC_0372.JPG" width="100" height="100">
+
         </div>
     </div>
 </div>
+
+@*<img src="/src/SUPUS.Web/wwwroot/Content/Images/ButtonIn.png">*@
+<a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Action" asp-action="Present" asp-route-id="1">Button</a>
+<a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Action" asp-action="Absent" asp-route-id="1">Button</a>
+
+
+
+
+@*@{
+        ViewBag.Title = "SUPUS Home";
+    }
+
+    <div class="container" style="height:700px">
+        <div class="card border-secondary" style="margin-top:120px">
+            <div class="card-header text-white" style="background-color: #ed1c24;">
+               <strong>Introduction</strong>
+            </div>
+            <div class="card-body">
+                <h2>Добро пожаловать в СУПУС!</h2>
+                <p>
+                    СУПУС это новейшая системя для учета прихода и ухода сотрудников. Основные достоинста нашей системы:<br />
+                    <ul>
+                        <li>Интуитивный интерфейс</li>
+                        <li>Надежность</li>
+                        <li>Простота в использовании и развертывании</li>
+                    </ul>
+                </p>
+                <p>
+                    В ближайшем будущем пользовательская база СУПУСа будет только расти. Успевайте стать первыми!
+                </p>
+            </div>
+        </div>
+    </div>*@

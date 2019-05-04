@@ -3,7 +3,15 @@
     ViewData["Title"] = "Index";
 }
 
-<img src="C:\_Znatok\POLYTECH\SUPUS\src\SUPUS.Web\wwwroot\Content\Images\ButtonIn.png" border="0" class="img-responsive">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <img src="C:/_Znatok/POLYTECH/SUPUS/src/SUPUS.Web/wwwroot/Content/Images/ButtonIn.png" alt="dima loh" class="img-responsive">
+    
+        </div>
+    </div>
+</div>
 
-<a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Action" asp-action="Present" asp-route-id="1"></a>
-
+@*<img src="/src/SUPUS.Web/wwwroot/Content/Images/ButtonIn.png">*@
+<a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Action" asp-action="Present" asp-route-id="1">Button</a>
+<a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Action" asp-action="Absent" asp-route-id="1">Button</a>

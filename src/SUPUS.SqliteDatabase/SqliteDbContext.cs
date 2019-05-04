@@ -30,7 +30,7 @@ namespace SUPUS.SqliteDatabase
             @"PRAGMA foreign_keys=on;
                 CREATE TABLE TIME_TABLE(
                 FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEE(EMPLOYEE_ID) PRIMARY KEY,
-                DATA STRING PRIMARY KEY,
+                DATE STRING PRIMARY KEY,
                 BEGIN STRING NOT NULL,
                 END STRING NOT NULL
             );";
@@ -51,14 +51,6 @@ namespace SUPUS.SqliteDatabase
                 VALUES 
                 (1, '9:00:00', '18:00:00'),
                 (2, '12:00:00', '20:00:00')
-            ;";
-
-        private const string PopulateTime =
-            @"INSERT INTO SHIFT
-                (EMPLOYEE_ID, DATA, BEGIN, END)
-                VALUES 
-                (1, '2.01.1998', '9:00:00', '18:00:00'),
-                (2, '1.01.1999', '12:00:00', '20:00:00')
             ;";
 
         private SqliteConnection _connection;
@@ -113,8 +105,27 @@ namespace SUPUS.SqliteDatabase
             return employees;
         }
 
-        void EmployeeAction()
+        private string Temp(ActionInfo info)
         {
+            if (info.IsPresent)
+            {
+                return $@"INSERT INTO TIME
+                (EMPLOYEE_ID, DATE, BEGIN, END)
+                VALUES 
+                ({info.Id}, {info.Date}, {info.Time}, null)";
+            }
+            else
+            {
+                return $@"UPDATE INTO TIME
+                SET END {info.Time}
+                WHERE EMPLOYEE_ID = {info.Id} AND DATE = {info.Date}";               
+            }
+        }
+
+        public void EmployeeAction(ActionInfo info)
+        {
+            string temp = Temp(info);
+            ExecuteNonQuery(temp);           
         }
     }
 }

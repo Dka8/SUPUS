@@ -6,6 +6,6 @@ namespace SUPUS.Abstraction
     public interface IDbContext
     {
         IEnumerable<Employee> GetEmployees();
-
+        void EmployeeAction(ActionInfo info);
     }
 }

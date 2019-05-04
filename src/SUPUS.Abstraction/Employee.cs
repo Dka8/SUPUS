@@ -12,10 +12,11 @@ namespace SUPUS.Abstraction
         public ShiftType Shift { get; set; }
     }
 
-    public class ShiftType
+    public class ActionInfo
     {
-        public int Number { get; set; }
-        public string Begin { get; set; }
-        public string End { get; set; }
+        public int Id { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public bool IsPresent { get; set; }
     }
 }

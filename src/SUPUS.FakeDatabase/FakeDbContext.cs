@@ -6,6 +6,11 @@ namespace SUPUS.FakeDatabase
 {
     public class FakeDbContext : IDbContext
     {
+        public void EmployeeAction(ActionInfo info)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Employee> GetEmployees()
         {
             yield return new Employee { Id =1, Email = "email@mail.ru", FirstName = "Igor", LastName = "Ivanov", MiddleName = "Ivanovich", Shift = new ShiftType { Begin = "4", End = "4444" } };

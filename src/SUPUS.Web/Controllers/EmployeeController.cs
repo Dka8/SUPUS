@@ -32,7 +32,8 @@ namespace SUPUS.Web.Controllers
 
         public ActionResult TimeTable(int id)
         {
-            return View();
+            var timetable = _dbContext.GetTimeTable(id);
+            return View(timetable); 
         }
 
         // GET: Employee/Create

@@ -133,7 +133,29 @@ namespace SUPUS.SqliteDatabase
 
         public IEnumerable<TimeTable> GetTimeTable(int id)
         {
+            var command = _connection.CreateCommand();
+            command.CommandText =
+                $@"SELECT EMPLOYEE_ID, DATE, BEGIN, END
+                FROM TIME_TABLE
+                WHERE EMPLOYEE_ID = {id}";
+            var reader = command.ExecuteReader();
+
+            var TimeTable = new List<TimeTable>();
+            while (reader.Read())
+            {
+                var employee = new TimeTable()
+                {
+                    Id = reader.GetInt32(0),
+                    Date = reader.GetString(1),
+                    Present = reader.GetString(2),
+                    Absent = reader.GetString(3)
+                };
+            };
+            
+
+            return TimeTable;
             throw new NotImplementedException();
+
         }
     }
 }

@@ -1,7 +1,25 @@
-﻿
+﻿@using SUPUS.Abstraction
+@model IEnumerable<SUPUS.Abstraction.TimeTable>
 @{
-    ViewData["Title"] = "TimeTable";
+    ViewBag.Title = "Employee Time";
 }
-
-<h2>TimeTable</h2>
-
+<div class="container col-6 offset-3" style="margin-top:120px">
+    <div class="card border-secondary">
+        <div class="card-header text-white" style="background-color: #ed1c24;">
+            <strong>Employee Detail Information</strong>
+        </div>
+        <div class="card-body text-secondary">
+            <table class="table table-bordered table-striped">
+                @foreach (var u in Model)
+                {
+                <tr>
+                    <td>@u.Id</td>
+                    <td>@u.Date</td>
+                    <td>@u.Present</td>
+                    <td>@u.Absent</td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

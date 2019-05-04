@@ -3,18 +3,30 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <img src="/_Znatok/Pictures/DSC_0372.JPG" width="100" height="100">
 
+
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col text-center">
+            <p>Dima Loh</p>
+        </div>
+        <div class="col text-center">
+            <p>Dima Loh2</p>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col text-center">
+            <a asp-controller="Action" asp-action="Present" asp-route-id="1"><img src="~/Content/Images/ButtonIn.png"></a>
+        </div>
+        <div class="col text-center">
+            <a asp-controller="Action" asp-action="Absent" asp-route-id="1"><img src="~/Content/Images/ButtonOut.png"></a>
         </div>
     </div>
 </div>
 
 @*<img src="/src/SUPUS.Web/wwwroot/Content/Images/ButtonIn.png">*@
-<a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Action" asp-action="Present" asp-route-id="1">Button</a>
-<a class="btn-sm btn-primary" style="background-color: #ed1c24;" asp-controller="Action" asp-action="Absent" asp-route-id="1">Button</a>
+
 
 
 

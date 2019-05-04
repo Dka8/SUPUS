@@ -11,12 +11,4 @@ namespace SUPUS.Abstraction
         public string MiddleName { get; set; }
         public ShiftType Shift { get; set; }
     }
-
-    public class ActionInfo
-    {
-        public int Id { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
-        public bool IsPresent { get; set; }
-    }
 }

@@ -130,5 +130,10 @@ namespace SUPUS.SqliteDatabase
             string temp = Temp(info);
             ExecuteNonQuery(temp);           
         }
+
+        public IEnumerable<TimeTable> GetTimeTable(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -30,6 +30,11 @@ namespace SUPUS.Web.Controllers
             return View(employee);
         }
 
+        public ActionResult TimeTable(int id)
+        {
+            return View();
+        }
+
         // GET: Employee/Create
         public ActionResult Create()
         {

@@ -4,11 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SUPUS.Abstraction;
 
 namespace SUPUS.Web.Controllers
 {
     public class ActionController : Controller
     {
+        private IDbContext _dbContext;
+
+        public ActionController(IDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         // GET: Action
         public ActionResult Index()
         {
@@ -21,10 +29,18 @@ namespace SUPUS.Web.Controllers
             try
             {
                 // TODO: Add insert logic here
+                ActionInfo info = new ActionInfo()
+                {
+                    Id = id,
+                    Date = DateTime.Now.ToString("dd/MM/yyyy"),
+                    Time = DateTime.Now.ToString("hh:mm:ss"),
+                    IsPresent = true
+                };
 
+                _dbContext.EmployeeAction(info);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
             }

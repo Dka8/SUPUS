@@ -187,11 +187,12 @@ namespace SUPUS.SqliteDatabase
                 WHERE EMPLOYEE_ID = {Id};";
         }
 
-        private string EditEmployee(Employee Empl)
+        public void UpdateEmployee(Employee Empl)
         {
-            return $@"UPDATE EMPLOYEE
-                SET FIRST_NAME = {Empl.FirstName}, LAST_NAME = {Empl.LastName}, MIDDLE_NAME = {Empl.MiddleName}, SHIFT_NUMBER = {Empl.Shift.Number}
+            string UpdateEmpl = $@"UPDATE EMPLOYEE
+                SET FIRST_NAME = '{Empl.FirstName}', LAST_NAME = '{Empl.LastName}', MIDDLE_NAME = '{Empl.MiddleName}', SHIFT_NUMBER = {Empl.Shift.Number}
                 WHERE EMPLOYEE_ID = {Empl.Id};";
+            ExecuteNonQuery(UpdateEmpl);
         }
 
         private string AddShift(ShiftType NewSh)
@@ -236,11 +237,6 @@ namespace SUPUS.SqliteDatabase
                 ShiftTable.Add(entry);
             };
             return ShiftTable;
-        }
-
-        public void UpdateEmployee(Employee employee)
-        {
-            throw new NotImplementedException();
         }
     }
 }

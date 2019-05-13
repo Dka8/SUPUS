@@ -53,7 +53,7 @@ namespace SUPUS.Web.Controllers
                 _dbContext.UpdateEmployee(employee);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception exp)
             {
                 return View();
             }

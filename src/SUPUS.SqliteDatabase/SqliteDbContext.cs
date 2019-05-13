@@ -265,7 +265,6 @@ namespace SUPUS.SqliteDatabase
                 EmployeeView.Add(entry);
             };
             return EmployeeView;
-            throw new NotImplementedException();
         }
 
         public IEnumerable<EmployeeViewInfo> GetPresentEmployees()
@@ -273,10 +272,11 @@ namespace SUPUS.SqliteDatabase
             string date = System.DateTime.Now.ToString("dd/MM/yyyy");
             var command = _connection.CreateCommand();
             command.CommandText =
-                $@"SELECT EMPLOYEE_ID||' '||FIRST_NAME||' '||LAST_NAME||' '||'('|| EMAIL ||')'
-                FROM EMPLOYEE Emp JOIN TIME_TABLE Time 
-                ON Emp.employee_id = Time.employee_id
-                WHERE ((Time.BEGIN is NULL) OR (Time.Begin is NOT NULL AND Time.End is NOT NULL)) AND Time.DATE={date};";
+                $@"
+                SELECT EMP.EMPLOYEE_ID, EMP.FIRST_NAME || ' ' || EMP.LAST_NAME || ' (' || EMP.EMAIL || ')'
+                FROM EMPLOYEE EMP JOIN TIME_TABLE TT
+                ON (EMP.EMPLOYEE_ID = TT.EMPLOYEE_ID)
+                WHERE TT.BEGIN IS NOT NULL AND TT.DATE='{date}' AND TT.END IS NULL;";
             var reader = command.ExecuteReader();
 
             var EmployeeView = new List<EmployeeViewInfo>();
@@ -290,7 +290,6 @@ namespace SUPUS.SqliteDatabase
                 EmployeeView.Add(entry);
             };
             return EmployeeView;
-            throw new NotImplementedException();
         }
     }
 }

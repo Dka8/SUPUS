@@ -34,7 +34,8 @@ namespace SUPUS.Web.Controllers
         public ActionResult Edit(int id)
         {
             var employee = _dbContext.GetEmployees().FirstOrDefault(e => e.Id == id);
-            return View(employee);
+            var shiftTypes = _dbContext.GetShiftTypes();
+            return View(new Tuple<Employee, IEnumerable<ShiftType>>(employee, shiftTypes));
         }
 
         // POST: Employee/Edit/5

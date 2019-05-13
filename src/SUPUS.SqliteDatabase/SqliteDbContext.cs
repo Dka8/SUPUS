@@ -187,6 +187,13 @@ namespace SUPUS.SqliteDatabase
                 WHERE EMPLOYEE_ID = {Id};";
         }
 
+        private string EditEmployee(Employee Empl)
+        {
+            return $@"UPDATE EMPLOYEE
+                SET FIRST_NAME = {Empl.FirstName}, LAST_NAME = {Empl.LastName}, MIDDLE_NAME = {Empl.MiddleName}, SHIFT_NUMBER = {Empl.Shift.Number}
+                WHERE EMPLOYEE_ID = {Empl.Id};";
+        }
+
         private string AddShift(ShiftType NewSh)
         {
             return $@"INSERT INTO SHIFT
@@ -199,6 +206,13 @@ namespace SUPUS.SqliteDatabase
         {
             return $@"DELETE FROM SHIFT
                 WHERE NUMBER = {Number};";
+        }
+
+        private string EditShift(ShiftType Shift)
+        {
+            return $@"UPDATE SHIFT
+                SET BEGIN = {Shift.Begin}, END = {Shift.End}
+                WHERE EMPLOYEE_ID = {Shift.Number};";
         }
     }
 }

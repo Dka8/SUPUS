@@ -241,7 +241,7 @@ namespace SUPUS.SqliteDatabase
 
         public IEnumerable<EmployeeViewInfo> GetAbsentEmployees()
         {
-            string data = System.DateTime.Now.ToString("MM/dd/yyyy");
+            string data = System.DateTime.Now.ToString("dd/MM/yyyy");
             var command = _connection.CreateCommand();
             command.CommandText =
                 $@"SELECT EMPLOYEE_ID||' '||FIRST_NAME||' '||LAST_NAME||' '||'('|| EMAIL ||')'
@@ -266,6 +266,26 @@ namespace SUPUS.SqliteDatabase
 
         public IEnumerable<EmployeeViewInfo> GetPresentEmployees()
         {
+            string data = System.DateTime.Now.ToString("dd/MM/yyyy");
+            var command = _connection.CreateCommand();
+            command.CommandText =
+                $@"SELECT EMPLOYEE_ID||' '||FIRST_NAME||' '||LAST_NAME||' '||'('|| EMAIL ||')'
+                FROM EMPLOYEE Emp JOIN TIME_TABLE Time 
+                ON Emp.employee_id = Time.employee_id
+                WHERE ((Time.BEGIN is NULL) OR (Time.Begin is NOT NULL AND Time.End is NOT NULL)) AND Time.DATA={data};";
+            var reader = command.ExecuteReader();
+
+            var EmployeeView = new List<EmployeeViewInfo>();
+            while (reader.Read())
+            {
+                var entry = new EmployeeViewInfo()
+                {
+                    Id = reader.GetInt32(0),
+                    ViewInfo = reader.GetString(1)
+                };
+                EmployeeView.Add(entry);
+            };
+            return EmployeeView;
             throw new NotImplementedException();
         }
     }

@@ -125,17 +125,11 @@ namespace SUPUS.SqliteDatabase
                 FROM TIME_TABLE
                 WHERE EMPLOYEE_ID = {info.Id};";
                 var reader = command.ExecuteReader();
-
-                var timeTable = new List<TimeTable>();
-                while (reader.Read())
+                var entry = new TimeTable()
                 {
-                    var entry = new TimeTable()
-                    {
-                        Absent = reader.IsDBNull(0) ? String.Empty : reader.GetString(0)
-                    };
-                    timeTable.Add(entry);
+                    Absent = reader.GetString(0)
                 };
-                if (timeTable[timeTable.Count-1].Absent == "")
+                if (entry.Absent == "")
                 {
                     return $@"UPDATE TIME_TABLE
                 SET END = '{info.Time}'

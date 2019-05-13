@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <td><strong>Имя</strong></td>
-                        <td><input class="form-control" type="text" asp-for="FirstName" /></td>
+                        <td><input class="form-control" type="text" asp-for="FirstName" required/></td>
                     </tr>
                     <tr>
                         <td><strong>Отчество</strong></td>
@@ -28,16 +28,16 @@
                     </tr>
                     <tr>
                         <td><strong>Фамилия</strong></td>
-                        <td><input class="form-control" type="text" asp-for="LastName" /></td>
+                        <td><input class="form-control" type="text" asp-for="LastName" required/></td>
                     </tr>
                     <tr>
                         <td><strong>Почта</strong></td>
-                        <td><input class="form-control" type="text" asp-for="Email" /></td>
+                        <td><input class="form-control" type="text" asp-for="Email" required/></td>
                     </tr>
                     <tr>
                         <td><strong>Смена</strong></td>
                         <td>
-                            <select class="form-control" asp-for="Shift.Begin">
+                            <select class="form-control" asp-for="Shift.Begin" required>
                                 @foreach (var shift in ViewBag.Shifts)
                                 {
                                     <option>@String.Format("{0} ({1} - {2})", shift.Number, shift.Begin, shift.End)</option>

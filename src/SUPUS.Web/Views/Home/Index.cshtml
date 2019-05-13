@@ -1,5 +1,4 @@
 ﻿@using SUPUS.Abstraction
-@model EmployeeViewInfo
 @{
     ViewData["Title"] = "Index";
 }
@@ -8,10 +7,10 @@
     <div class="row justify-content-center align-items-center">
         <div class="col text-center">
             <p>Dima Loh</p>
-            <select class="form-control" asp-for="ViewInfo">
+            <select multiple class="form-control" id="sel1">
                 @foreach (var employee in ViewBag.Absents)
                 {
-                    <option>@employee</option>
+                    <option>@employee.ViewInfo</option>
                 }
             </select>
         </div>
@@ -20,8 +19,10 @@
         </div>
     </div>
     <div class="row justify-content-center align-items-center">
+
+
         <div class="col text-center">
-            <a asp-controller="Home" asp-action="Present" asp-route-id="1"><img src="~/Content/Images/ButtonIn.png"></a>
+            <a asp-controller="Home" asp-action="Present" asp-route-id=$(this).find(""option:selected").Id"><img src="~/Content/Images/ButtonIn.png"></a>
         </div>
         <div class="col text-center">
             <a asp-controller="Home" asp-action="Absent" asp-route-id="1"><img src="~/Content/Images/ButtonOut.png"></a>

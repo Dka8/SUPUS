@@ -78,7 +78,7 @@ namespace SUPUS.SqliteDatabase
         {
             var command = _connection.CreateCommand();
             command.CommandText =
-                @"SELECT EMP.EMPLOYEE_ID, EMP.EMAIL, EMP.FIRST_NAME, EMP.LAST_NAME, EMP.MIDDLE_NAME, EMP.SHIFT_NUMBER, SH.NUMBER, SH.BEGIN, SH.END
+                @"SELECT EMP.EMPLOYEE_ID, EMP.EMAIL, EMP.FIRST_NAME, EMP.LAST_NAME, EMP.MIDDLE_NAME, EMP.SHIFT_NUMBER, SH.BEGIN, SH.END
                 FROM EMPLOYEE EMP
                 join SHIFT SH ON (EMP.SHIFT_NUMBER = SH.NUMBER)
                 ORDER BY EMPLOYEE_ID";

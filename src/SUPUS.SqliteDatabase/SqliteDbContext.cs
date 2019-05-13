@@ -172,5 +172,30 @@ namespace SUPUS.SqliteDatabase
             };
             return timeTable;
         }
+
+        private string AddEmployee(Employee NewEmpl)
+        {
+            return $@"INSERT INTO EMPLOYEE
+                (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, MIDDLE_NAME, SHIFT_NUMBER)
+                VALUES 
+                ({NewEmpl.Id}, '{NewEmpl.FirstName}', '{NewEmpl.LastName}', '{NewEmpl.LastName}', '{NewEmpl.MiddleName}', {NewEmpl.Shift.Number});";
+        }
+
+        //private string DeleteEmployee(int Id)
+        //{
+        //    return $@"INSERT INTO SHIFT
+        //        (NUMBER, BEGIN, END)
+        //        VALUES 
+        //        ({NewSh.Number}, '{NewSh.Begin}', '{NewSh.End}');";
+        //}
+
+        private string AddShift(ShiftType NewSh)
+        {
+            return $@"INSERT INTO SHIFT
+                (NUMBER, BEGIN, END)
+                VALUES 
+                ({NewSh.Number}, '{NewSh.Begin}', '{NewSh.End}');";
+        }
+
     }
 }

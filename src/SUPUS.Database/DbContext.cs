@@ -16,6 +16,11 @@ namespace SUPUS.Database
             throw new NotImplementedException();
         }
 
+        public IEnumerable<ShiftType> GetShiftTypes()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<TimeTable> GetTimeTable(int id)
         {
             throw new NotImplementedException();

@@ -214,5 +214,28 @@ namespace SUPUS.SqliteDatabase
                 SET BEGIN = {Shift.Begin}, END = {Shift.End}
                 WHERE EMPLOYEE_ID = {Shift.Number};";
         }
+
+        public IEnumerable<ShiftType> GetShiftTypes()
+        {
+            var command = _connection.CreateCommand();
+            command.CommandText =
+                $@"SELECT NUMBER, BEGIN, END
+                FROM SHIFT
+                ORDER BY NUMBER;";
+            var reader = command.ExecuteReader();
+
+            var ShiftTable = new List<ShiftType>();
+            while (reader.Read())
+            {
+                var entry = new ShiftType()
+                {
+                    Number = reader.GetInt32(0),
+                    Begin = reader.GetString(1),
+                    End = reader.GetString(2)
+                };
+                ShiftTable.Add(entry);
+            };
+            return ShiftTable;
+        }
     }
 }

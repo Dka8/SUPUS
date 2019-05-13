@@ -17,6 +17,11 @@ namespace SUPUS.FakeDatabase
             yield return new Employee { Id = 2, Email = "noemail@mail.ru", FirstName = "Dima", LastName = "Martunov", Shift = new ShiftType { Begin = "444", End = "444" } };
         }
 
+        public IEnumerable<ShiftType> GetShiftTypes()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<TimeTable> GetTimeTable(int id)
         {
             throw new NotImplementedException();

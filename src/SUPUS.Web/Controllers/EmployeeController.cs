@@ -30,6 +30,31 @@ namespace SUPUS.Web.Controllers
             return View(employee);
         }
 
+        // GET: Employee/Edit
+        public ActionResult Edit(int id)
+        {
+            var employee = _dbContext.GetEmployees().FirstOrDefault(e => e.Id == id);
+            return View(employee);
+        }
+
+        // POST: Employee/Edit/5
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Employee/Timetable/5
         public ActionResult TimeTable(int id)
         {
             var timetable = _dbContext.GetTimeTable(id);
@@ -50,29 +75,6 @@ namespace SUPUS.Web.Controllers
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Employee/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Employee/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
             }

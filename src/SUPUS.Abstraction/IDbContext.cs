@@ -8,5 +8,6 @@ namespace SUPUS.Abstraction
         IEnumerable<Employee> GetEmployees();
         void EmployeeAction(ActionInfo info);
         IEnumerable<TimeTable> GetTimeTable(int id);
+        IEnumerable<ShiftType> GetShiftTypes();
     }
 }

@@ -49,6 +49,8 @@ namespace SUPUS.Web.Controllers
                 // TODO: Add update logic here
                 employee.Shift.Number 
                     = Int32.Parse(employee.Shift.Begin.Split().First());
+
+                _dbContext.UpdateEmployee(employee);
                 return RedirectToAction(nameof(Index));
             }
             catch

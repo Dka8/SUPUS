@@ -41,10 +41,10 @@ namespace SUPUS.SqliteDatabase
             @"INSERT INTO EMPLOYEE
                 (EMAIL, FIRST_NAME, LAST_NAME, MIDDLE_NAME, SHIFT_NUMBER)
                 VALUES 
-                ('gg1@mail.ru','Snya','Petrov','',1),
-                ('gg2@mail.ru','Snya','Petrov','',2),
-                ('gg3@mail.ru','Snya','Petrov','',1),
-                ('gg4@mail.ru','Snya','Petrov',NULL,1)
+                ('your.little@pen.is','Dima','Loh',NULL,1),
+                ('your.big@chl.en','Ildar','Sun','Aimaladca',2),
+                ('my.simple@email.ru','Ivan','Ushkov','Zabuhanovich',1),
+                ('grand.admiral@san.ya','Alexandr','Gulyaev','Stupidovich',1)
             ;";
 
         private const string PopulateShift =
@@ -181,13 +181,11 @@ namespace SUPUS.SqliteDatabase
                 ({NewEmpl.Id}, '{NewEmpl.FirstName}', '{NewEmpl.LastName}', '{NewEmpl.LastName}', '{NewEmpl.MiddleName}', {NewEmpl.Shift.Number});";
         }
 
-        //private string DeleteEmployee(int Id)
-        //{
-        //    return $@"INSERT INTO SHIFT
-        //        (NUMBER, BEGIN, END)
-        //        VALUES 
-        //        ({NewSh.Number}, '{NewSh.Begin}', '{NewSh.End}');";
-        //}
+        private string DeleteEmployee(int Id)
+        {
+            return $@"DELETE FROM EMPLOYEE
+                WHERE EMPLOYEE_ID = {Id};";
+        }
 
         private string AddShift(ShiftType NewSh)
         {
@@ -197,5 +195,10 @@ namespace SUPUS.SqliteDatabase
                 ({NewSh.Number}, '{NewSh.Begin}', '{NewSh.End}');";
         }
 
+        private string DeleteShift(int Number)
+        {
+            return $@"DELETE FROM SHIFT
+                WHERE NUMBER = {Number};";
+        }
     }
 }

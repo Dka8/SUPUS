@@ -1,37 +1,41 @@
 ﻿@using SUPUS.Abstraction
 @model Employee
 @{
-    ViewBag.Title = "Update Employee";
+    ViewBag.Title = "Изменить сотрудника";
 }
 <form asp-action="Edit" method="post">
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="Email" />
 
     <div class="container col-6 offset-3" style="margin-top:120px">
-        <div class="card border-info">
-            <div class="card-header text-white bg-info">
-                <strong>Update User</strong>
+        <div class="card border-secondary">
+            <div class="card-header text-white" style="background-color: #ed1c24;">
+                <strong>Изменить сотрудника</strong>
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <tr>
-                        <th>Property</th>
-                        <th>Value</th>
+                        <th>Свойство</th>
+                        <th>Значение</th>
                     </tr>
                     <tr>
-                        <td><strong>Firstname</strong></td>
+                        <td><strong>Имя</strong></td>
                         <td><input class="form-control" type="text" asp-for="FirstName" /></td>
                     </tr>
                     <tr>
-                        <td><strong>Lastname</strong></td>
-                        <td><input class="form-control" type="text" asp-for="LastName" /></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Middlename</strong></td>
+                        <td><strong>Оттечтво</strong></td>
                         <td><input class="form-control" type="text" asp-for="MiddleName" /></td>
                     </tr>
                     <tr>
-                        <td><strong>Shift</strong></td>
+                        <td><strong>Фамилия</strong></td>
+                        <td><input class="form-control" type="text" asp-for="LastName" /></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Почта</strong></td>
+                        <td><input class="form-control" type="text" asp-for="Email" /></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Смена</strong></td>
                         <td>
                             <select class="form-control" asp-for="Shift.Begin">
                                 @foreach (var shift in ViewBag.Shifts)
@@ -42,7 +46,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>Update</strong></td>
+                        <td><strong>Сохранить</strong></td>
                         <td><input type="submit" class="btn-sm btn-success" value="Update" /></td>
                     </tr>
                 </table>

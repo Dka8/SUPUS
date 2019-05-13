@@ -1,7 +1,7 @@
 ﻿@using SUPUS.Abstraction
 @model Employee
 @{
-    ViewBag.Title = "Employee Detail";
+    ViewBag.Title = "Информация сотрудника";
 }
 <div class="container col-6 offset-3" style="margin-top:120px">
     <div class="card border-secondary">
@@ -15,16 +15,20 @@
                     <th>Значение</th>
                 </tr>
                 <tr>
-                    <td><strong>ID</strong></td>
-                    <td>@Model.Id</td>
+                    <td><strong>Имя</strong></td>
+                    <td>@Model.FirstName</td>
+                </tr>
+                <tr>
+                    <td><strong>Оттечтво</strong></td>
+                    <td>@Model.MiddleName</td>
                 </tr>
                 <tr>
                     <td><strong>Фамилия</strong></td>
                     <td>@Model.LastName</td>
                 </tr>
                 <tr>
-                    <td><strong>Имя</strong></td>
-                    <td>@Model.FirstName</td>
+                    <td><strong>Почта</strong></td>
+                    <td>@Model.Email</td>
                 </tr>
                 <tr>
                     <td><strong>Номер смены</strong></td>

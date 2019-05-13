@@ -1,25 +1,23 @@
 ﻿@using SUPUS.Abstraction
 @model IEnumerable<SUPUS.Abstraction.TimeTable>
 @{
-    ViewBag.Title = "Employee Time";
+    ViewBag.Title = "Приход/уход сотрудника";
 }
 <div class="container col-6 offset-3" style="margin-top:120px">
     <div class="card border-secondary">
         <div class="card-header text-white" style="background-color: #ed1c24;">
-            <strong>Employee Detail Information</strong>
+            <strong>Приход/уход сотрудника</strong>
         </div>
         <div class="card-body text-secondary">
             <table class="table table-bordered table-striped">
                 <tr>
-                    <th>Id</th>
-                    <th>Date</th>
-                    <th>Present</th>
-                    <th>Absent</th>
+                    <th>Дата</th>
+                    <th>Присутствует</th>
+                    <th>Отсутствует</th>
                 </tr>
                 @foreach (var u in Model)
                 {
                 <tr>
-                    <td>@u.Id</td>
                     <td>@u.Date</td>
                     <td>@u.Present</td>
                     <td>@u.Absent</td>

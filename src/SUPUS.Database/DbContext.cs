@@ -11,7 +11,17 @@ namespace SUPUS.Database
             throw new NotImplementedException();
         }
 
+        public IEnumerable<EmployeeViewInfo> GetAbsentEmployees()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Employee> GetEmployees()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<EmployeeViewInfo> GetPresentEmployees()
         {
             throw new NotImplementedException();
         }

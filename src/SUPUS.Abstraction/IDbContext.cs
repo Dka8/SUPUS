@@ -10,5 +10,7 @@ namespace SUPUS.Abstraction
         IEnumerable<TimeTable> GetTimeTable(int id);
         IEnumerable<ShiftType> GetShiftTypes();
         void UpdateEmployee(Employee employee);
+        IEnumerable<EmployeeViewInfo> GetAbsentEmployees();
+        IEnumerable<EmployeeViewInfo> GetPresentEmployees();
     }
 }

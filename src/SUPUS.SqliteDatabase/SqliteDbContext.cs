@@ -238,5 +238,15 @@ namespace SUPUS.SqliteDatabase
             };
             return ShiftTable;
         }
+
+        public IEnumerable<EmployeeViewInfo> GetAbsentEmployees()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<EmployeeViewInfo> GetPresentEmployees()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

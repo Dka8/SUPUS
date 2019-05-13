@@ -11,4 +11,10 @@ namespace SUPUS.Abstraction
         public string MiddleName { get; set; }
         public ShiftType Shift { get; set; }
     }
+
+    public class EmployeeViewInfo
+    {
+        public int Id { get; set; }
+        public string ViewInfo { get; set; }
+    }
 }

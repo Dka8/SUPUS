@@ -241,13 +241,11 @@ namespace SUPUS.SqliteDatabase
 
         public IEnumerable<EmployeeViewInfo> GetAbsentEmployees()
         {
-            string data = System.DateTime.Now.ToString("dd/MM/yyyy");
+            string date = System.DateTime.Now.ToString("dd/MM/yyyy");
             var command = _connection.CreateCommand();
             command.CommandText =
-                $@"SELECT EMPLOYEE_ID||' '||FIRST_NAME||' '||LAST_NAME||' '||'('|| EMAIL ||')'
-                FROM EMPLOYEE Emp JOIN TIME_TABLE Time 
-                ON Emp.employee_id = Time.employee_id
-                WHERE ((Time.BEGIN is NULL) OR (Time.Begin is NOT NULL AND Time.End is NOT NULL)) AND Time.DATA={data};";
+                $@"SELECT Emp.EMPLOYEE_ID, Emp.FIRST_NAME || ' ' || Emp.LAST_NAME || ' (' || Emp.EMAIL || ')'
+                FROM EMPLOYEE Emp;";
             var reader = command.ExecuteReader();
 
             var EmployeeView = new List<EmployeeViewInfo>();
@@ -266,13 +264,13 @@ namespace SUPUS.SqliteDatabase
 
         public IEnumerable<EmployeeViewInfo> GetPresentEmployees()
         {
-            string data = System.DateTime.Now.ToString("dd/MM/yyyy");
+            string date = System.DateTime.Now.ToString("dd/MM/yyyy");
             var command = _connection.CreateCommand();
             command.CommandText =
                 $@"SELECT EMPLOYEE_ID||' '||FIRST_NAME||' '||LAST_NAME||' '||'('|| EMAIL ||')'
                 FROM EMPLOYEE Emp JOIN TIME_TABLE Time 
                 ON Emp.employee_id = Time.employee_id
-                WHERE ((Time.BEGIN is NULL) OR (Time.Begin is NOT NULL AND Time.End is NOT NULL)) AND Time.DATA={data};";
+                WHERE ((Time.BEGIN is NULL) OR (Time.Begin is NOT NULL AND Time.End is NOT NULL)) AND Time.DATE={date};";
             var reader = command.ExecuteReader();
 
             var EmployeeView = new List<EmployeeViewInfo>();

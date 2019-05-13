@@ -1,15 +1,19 @@
-﻿
+﻿@using SUPUS.Abstraction
+@model EmployeeViewInfo
 @{
     ViewData["Title"] = "Index";
 }
-
-
-
 
 <div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="col text-center">
             <p>Dima Loh</p>
+            <select class="form-control" asp-for="ViewInfo">
+                @foreach (var employee in ViewBag.Absents)
+                {
+                    <option>@employee</option>
+                }
+            </select>
         </div>
         <div class="col text-center">
             <p>Dima Loh2</p>

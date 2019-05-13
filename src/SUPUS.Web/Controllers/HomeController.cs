@@ -21,7 +21,9 @@ namespace SUPUS.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var emp = new EmployeeViewInfo();
+            ViewBag.Absents = _dbContext.GetAbsentEmployees();
+            return View(emp);
         }
 
         // GET: Home/Present

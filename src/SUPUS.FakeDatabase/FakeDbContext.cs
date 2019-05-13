@@ -26,5 +26,10 @@ namespace SUPUS.FakeDatabase
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

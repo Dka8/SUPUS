@@ -33,20 +33,22 @@ namespace SUPUS.Web.Controllers
         // GET: Employee/Edit
         public ActionResult Edit(int id)
         {
-            var employee = _dbContext.GetEmployees().FirstOrDefault(e => e.Id == id);
             var shiftTypes = _dbContext.GetShiftTypes();
-            return View(new Tuple<Employee, IEnumerable<ShiftType>>(employee, shiftTypes));
+            ViewBag.Shifts = shiftTypes;
+            var employee = _dbContext.GetEmployees().FirstOrDefault(e => e.Id == id);
+            return View(employee);
         }
 
         // POST: Employee/Edit/5
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Employee employee)
         {
             try
             {
                 // TODO: Add update logic here
-
+                employee.Shift.Number 
+                    = Int32.Parse(employee.Shift.Begin.Split().First());
                 return RedirectToAction(nameof(Index));
             }
             catch

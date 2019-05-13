@@ -237,5 +237,10 @@ namespace SUPUS.SqliteDatabase
             };
             return ShiftTable;
         }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

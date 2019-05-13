@@ -115,13 +115,37 @@ namespace SUPUS.SqliteDatabase
                 return $@"INSERT INTO TIME_TABLE
                 (EMPLOYEE_ID, DATE, BEGIN, END)
                 VALUES 
-                ({info.Id}, '{info.Date}', '{info.Time}', null);";
+                ({info.Id}, '{info.Date}', '{info.Time}', '');";
             }
             else
             {
-                return $@"UPDATE TIME_TABLE
+                var command = _connection.CreateCommand();
+                command.CommandText =
+                    $@"SELECT END
+                FROM TIME_TABLE
+                WHERE EMPLOYEE_ID = {info.Id};";
+                var reader = command.ExecuteReader();
+
+                var timeTable = new List<TimeTable>();
+                while (reader.Read())
+                {
+                    var entry = new TimeTable()
+                    {
+                        Absent = reader.IsDBNull(0) ? String.Empty : reader.GetString(0)
+                    };
+                    timeTable.Add(entry);
+                };
+                if (timeTable[timeTable.Count-1].Absent == "")
+                {
+                    return $@"UPDATE TIME_TABLE
                 SET END = '{info.Time}'
-                WHERE EMPLOYEE_ID = {info.Id} AND DATE = '{info.Date}';";               
+                WHERE EMPLOYEE_ID = {info.Id} AND DATE = '{info.Date}';";
+                }
+                else
+                {
+                    new Exception();
+                    return null;
+                }
             }
         }
 

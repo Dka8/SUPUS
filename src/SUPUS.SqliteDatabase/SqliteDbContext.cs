@@ -244,8 +244,14 @@ namespace SUPUS.SqliteDatabase
             string date = System.DateTime.Now.ToString("dd/MM/yyyy");
             var command = _connection.CreateCommand();
             command.CommandText =
-                $@"SELECT Emp.EMPLOYEE_ID, Emp.FIRST_NAME || ' ' || Emp.LAST_NAME || ' (' || Emp.EMAIL || ')'
-                FROM EMPLOYEE Emp;";
+                $@"
+                SELECT EMP.EMPLOYEE_ID, EMP.FIRST_NAME || ' ' || EMP.LAST_NAME || ' (' || EMP.EMAIL || ')'
+                FROM EMPLOYEE EMP 
+                EXCEPT
+                SELECT EMP.EMPLOYEE_ID, EMP.FIRST_NAME || ' ' || EMP.LAST_NAME || ' (' || EMP.EMAIL || ')'
+                FROM EMPLOYEE EMP JOIN TIME_TABLE TT
+                ON (EMP.EMPLOYEE_ID = TT.EMPLOYEE_ID)
+                WHERE TT.BEGIN IS NOT NULL AND TT.DATE='{date}';";
             var reader = command.ExecuteReader();
 
             var EmployeeView = new List<EmployeeViewInfo>();
